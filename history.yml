@@ -1,0 +1,40 @@
+---
+buzzwords: |+
+  data: {"items":[{"label":"Paradigm shift","value":4},{"label":"Exit strategy","value":8},{"label":"Leverage","value":3},{"label":"Pivoting","value":4},{"label":"Web 2.0","value":3},{"label":"Streamlininess","value":3},{"label":"Turn-key","value":4},{"label":"Synergy","value":2},{"label":"Enterprise","value":3}],"id":"buzzwords","updatedAt":1432664755}
+
+convergence: |+
+  data: {"points":[{"x":35,"y":20},{"x":36,"y":9},{"x":37,"y":44},{"x":38,"y":21},{"x":39,"y":48},{"x":40,"y":3},{"x":41,"y":46},{"x":42,"y":37},{"x":43,"y":14},{"x":44,"y":31}],"id":"convergence","updatedAt":1432664755}
+
+valuation: |+
+  data: {"current":56,"last":33,"id":"valuation","updatedAt":1432664755}
+
+karma: |+
+  data: {"current":5424,"last":90970,"id":"karma","updatedAt":1432664755}
+
+synergy: |+
+  data: {"value":95,"id":"synergy","updatedAt":1432664755}
+
+gen_today: |+
+  data: {"value":"0.166608E5","id":"gen_today","updatedAt":1432664747}
+
+gen_ytd: |+
+  data: {"value":"0.12104655E7","id":"gen_ytd","updatedAt":1432664747}
+
+gen_mtd: |+
+  data: {"value":"0.5326111E6","id":"gen_mtd","updatedAt":1432664747}
+
+peak_gen: |+
+  data: {"text":"0.28E2 kWh on 2015-05-23","id":"peak_gen","updatedAt":1432585088}
+
+peak_gen_day: |+
+  data: {"text":"<div><ol>\n<li>2015-05-23 (28.0 kWh)</li>\n<li>2014-06-20 (27.9 kWh)</li>\n<li>2014-06-16 (27.5 kWh)</li>\n<li>2014-05-29 (27.1 kWh)</li>\n<li>2014-07-05 (26.8 kWh)</li>\n</ol></div>","id":"peak_gen_day","updatedAt":1432649105}
+
+hourly_gen_today: |+
+  data: {"points":[{"x":1432630800,"y":44},{"x":1432634400,"y":418},{"x":1432638000,"y":456},{"x":1432641600,"y":1493},{"x":1432645200,"y":2507},{"x":1432648800,"y":2046},{"x":1432652400,"y":3065},{"x":1432656000,"y":2979},{"x":1432659600,"y":2706},{"x":1432663200,"y":969}],"id":"hourly_gen_today","updatedAt":1432664747}
+
+peak_gen_by_day: |+
+  data: {"text":"<div><br/>1. 2015-05-23 (28.0 kWh)<br/>2. 2014-06-20 (27.9 kWh)<br/>3. 2014-06-16 (27.5 kWh)<br/>4. 2014-05-29 (27.1 kWh)<br/>5. 2014-07-05 (26.8 kWh)<br/></div>","id":"peak_gen_by_day","updatedAt":1432664687}
+
+gen_hour: |+
+  data: {"value":"0.9698E3","id":"gen_hour","updatedAt":1432664747}
+
