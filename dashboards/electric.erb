@@ -1,14 +1,22 @@
 <% content_for :title do %>Electrical Dashboard<% end %>
 <div class="gridster">
   <ul>
+
+<!--
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="gen_hour" data-view="Meter" data-title="Generation This Hour" data-moreinfo="In Watt Hours" data-min="0" data-max="4600"></div>
     </li>
+-->
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="gen_today" data-view="Meter" data-title="Generation Today" data-moreinfo="In Watt Hours" data-min="0" data-max="30000"></div>
     </li>
 
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="use_today" data-view="Meter" data-title="Usage Today" data-moreinfo="In Watt Hours" data-min="0" data-max="15000"></div>
+    </li>
+
+<!--
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="gen_mtd" data-view="Meter" data-title="Generation MTD" data-moreinfo="In Watt hours" data-min="0" data-max="600000"></div>
     </li>
@@ -16,22 +24,38 @@
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="gen_ytd" data-view="Meter" data-title="Generation YTD" data-moreinfo="In Watt hours" data-min="0" data-max="6000000"></div>
     </li>
+-->
 
-    <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="yearly_gen_ytd" data-view="Rickshawgraph"
+           data-renderer="bar" data-title="Generation YTD" ></div>
+    </li>
+
+  <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
       <div data-id="hourly_gen_today" data-view="Rickshawgraph"
            data-stroke="true"
+           data-moreinfo="Watt Hours"
+           data-unstack="true" data-legend="true"
            data-renderer="bar" data-title="Hourly Generation" ></div>
     </li>
 
-    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="peak_gen_by_day" data-view="Text"
-           data-title="Top 5 Generation days"></div>
+  <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="hourly_use_today" data-view="Rickshawgraph"
+           data-moreinfo="Watt Hours"
+           data-renderer="bar" data-title="Hourly Usage" ></div>
     </li>
+
 
     <li data-row="3" data-col="1" data-sizex="2" data-sizey="1">
       <div data-id="monthly_gen_year" data-view="Rickshawgraph"
-           data-stroke="true"
+           data-unstack="true" data-legend="true" data-max="620000"
+           data-moreinfo="Watt Hours"
            data-renderer="bar" data-title="Monthly Generation" ></div>
+    </li>
+
+    <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="peak_gen_by_day" data-view="Text"
+           data-title="Top 5 Generation days"></div>
     </li>
 
   </ul>
