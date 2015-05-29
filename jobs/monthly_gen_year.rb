@@ -1,7 +1,7 @@
 require_relative '../lib/common'
 
 # Generation by month graph
-SCHEDULER.every '1m', first_in: '5s' do
+SCHEDULER.every '1h', first_in: '15s' do
   now = Time.new
   query = <<-SQL
     SELECT distinct date_part('year', time) AS year
