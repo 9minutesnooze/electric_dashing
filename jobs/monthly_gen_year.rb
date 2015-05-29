@@ -23,7 +23,7 @@ SCHEDULER.every '1h', first_in: '15s' do
       )
       FROM t WHERE n IS NOT NULL
     )
-    SELECT n as year FROM t;
+    SELECT n as year FROM t WHERE n IS NOT NULL;
   SQL
 
   years = DB[query, register_id, register_id].map { |row| row[:year].to_i }
