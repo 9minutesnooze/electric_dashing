@@ -3,16 +3,30 @@ require_relative '../lib/common'
 # Generation by month graph
 SCHEDULER.every '1h', first_in: '15s' do
   now = Time.new
+  results = DB[:registers].select(:id).where(name: REGISTER).first
+  register_id = results[:id]
+
+  # postgres is bad at select distinct queries.  Use a recursive query
+  # http://zogovic.com/post/44856908222/optimizing-postgresql-query-for-distinct-values 
   query = <<-SQL
-    SELECT distinct date_part('year', time) AS year
-    FROM series s
-    JOIN registers r
-      ON r.id = s.register_id
-    WHERE r.name = ?
-    ORDER BY date_part('year', time) DESC
+    WITH RECURSIVE t(n) AS (
+      SELECT min(date_part('year',time))
+      FROM series
+      WHERE register_id = ?
+      UNION
+      SELECT (
+        SELECT date_part('year',time)
+        FROM series WHERE date_part('year',time) > n
+          AND register_id = ?
+        ORDER BY date_part('year',time)
+        LIMIT 1
+      )
+      FROM t WHERE n IS NOT NULL
+    )
+    SELECT n as year FROM t;
   SQL
 
-  years = DB[query, REGISTER].map { |row| row[:year].to_i }
+  years = DB[query, register_id, register_id].map { |row| row[:year].to_i }
 
   query = <<-SQL
     SELECT abs(sum(watt_hours)) as watt_hours, date_trunc('month', time) as month
