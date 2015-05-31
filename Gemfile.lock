@@ -91,3 +91,6 @@ DEPENDENCIES
   pg
   sequel
   twitter
+
+BUNDLED WITH
+   1.10.1
