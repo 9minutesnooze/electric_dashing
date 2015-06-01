@@ -8,7 +8,7 @@ SCHEDULER.every '1m', first_in: 0 do
     JOIN registers r
       ON r.id = s.register_id
     WHERE r.name = ?
-      AND date(time) > now() - interval '30 days'
+      AND date(time) > now() - interval '7 days'
     GROUP BY date(time)
     ORDER BY date(time)
   SQL
