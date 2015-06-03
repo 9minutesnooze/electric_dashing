@@ -8,8 +8,7 @@ SCHEDULER.every '1h', first_in: '5s' do
     JOIN registers r
       ON r.id = s.register_id
     WHERE r.name = ?
-      AND date_part('month', time) <= date_part('month', now())
-      AND date_part('day', time) <= date_part('day', now())
+      AND date_part('doy', time) <= date_part('doy', now())
     GROUP BY date_part('year', time)
     ORDER BY date_part('year', time)
   SQL
