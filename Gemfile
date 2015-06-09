@@ -4,4 +4,3 @@ gem 'dashing'
 gem 'pg'
 gem 'sequel'
 gem 'twitter'
-
