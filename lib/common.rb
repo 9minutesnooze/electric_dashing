@@ -18,7 +18,6 @@ def generation_since(start, register_name)
 end
 
 
-DATABASE = 'solar'
 REGISTER = 'gen'
 USAGE_REGISTER = 'use'
 LOGGER = Logger.new($stderr)
@@ -29,9 +28,12 @@ Egauge.configure do |config|
 end
 
 Sequel.extension :migration
-DB = Sequel.connect(adapter: 'postgres', database: DATABASE,
-                    user: 'aaron',
-                    logger: LOGGER, sql_log_level: :debug)
+unless ENV['DB_URL']
+  LOGGER.fatal('Please set $DB_URL.  Example: DB_URL=postgres://user:password@host:5432/database')
+  abort
+end
+
+DB = Sequel.connect(ENV['DB_URL'], logger: LOGGER, sql_log_level: :debug)
 
 migration_path = File.expand_path('../../db/migrate', __FILE__)
 Sequel::Migrator.run(DB, migration_path)
