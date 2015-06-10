@@ -23,16 +23,21 @@ USAGE_REGISTER = 'use'
 LOGGER = Logger.new($stderr)
 LOGGER.level = Logger::INFO
 
-Egauge.configure do |config|
-  config.url = 'http://sol.borg.lan'
+unless ENV['EGAUGE_URL']
+  LOGGER.fatal 'Please set $EGAUGE_URL.  Example: EGAUGE_URL="http://solar.example.com"'
+  abort
 end
 
-Sequel.extension :migration
 unless ENV['DB_URL']
   LOGGER.fatal('Please set $DB_URL.  Example: DB_URL=postgres://user:password@host:5432/database')
   abort
 end
 
+Egauge.configure do |config|
+  config.url = ENV['EGAUGE_URL']
+end
+
+Sequel.extension :migration
 DB = Sequel.connect(ENV['DB_URL'], logger: LOGGER, sql_log_level: :debug)
 
 migration_path = File.expand_path('../../db/migrate', __FILE__)
