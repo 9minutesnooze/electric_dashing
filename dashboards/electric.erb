@@ -63,12 +63,29 @@
            data-renderer="bar" data-title="Daily Usage" ></div>
     </li>
 
-    <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
+    <li data-row="2" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="monthly_use_year" data-view="Rickshawgraph"
+           data-unstack="true" data-legend="true" data-max="620000"
+           data-moreinfo="Watt Hours"
+           data-renderer="bar" data-title="Monthly Usage" ></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="yearly_use_ytd" data-view="Rickshawgraph"
+           data-renderer="bar" data-title="Usage YTD" ></div>
+    </li>
+
+
+    <li data-row="3" data-col="1" data-sizex="2" data-sizey="1">
       <div class="generation"
            data-id="peak_gen_by_day" data-view="Text"
            data-title="Top 5 Generation days"></div>
     </li>
 
+    <li data-row="3" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="peak_use_by_day" data-view="Text"
+           data-title="Top 5 Usage days"></div>
+    </li>
 
 
 
