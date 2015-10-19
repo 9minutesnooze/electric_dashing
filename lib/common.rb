@@ -23,12 +23,12 @@ USAGE_REGISTER = 'use'
 LOGGER = Logger.new($stderr)
 LOGGER.level = Logger::INFO
 
-unless ENV['EGAUGE_URL']
+if ENV['EGAUGE_URL'].nil? || ENV['EGAUGE_URL'].empty?
   LOGGER.fatal 'Please set $EGAUGE_URL.  Example: EGAUGE_URL="http://solar.example.com"'
   abort
 end
 
-unless ENV['DB_URL']
+if ENV['DB_URL'].nil? || ENV['DB_URL'].empty?
   LOGGER.fatal('Please set $DB_URL.  Example: DB_URL=postgres://user:password@host:5432/database')
   abort
 end
