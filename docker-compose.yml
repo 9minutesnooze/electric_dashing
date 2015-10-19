@@ -1,5 +1,6 @@
 dashing:
+  container_name: electric_dashing
+  env_file: config/common.env
   build: .
-  env_file: ./config/common.env
   ports:
   - "3030:3030"
