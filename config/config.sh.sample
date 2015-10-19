@@ -1,0 +1,2 @@
+EGAUGE_URL=http://sol.borg.lan
+DB_URL=postgres://aaron@cavil.borg.lan/solar
