@@ -23,3 +23,4 @@ tmp
 mkmf.log
 logs/
 config/config.sh
+config/*.env

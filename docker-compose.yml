@@ -1,0 +1,5 @@
+dashing:
+  build: .
+  env_file: ./config/common.env
+  ports:
+  - "3030:3030"
