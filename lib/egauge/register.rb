@@ -26,14 +26,24 @@ module Egauge
         end
       end
 
+      dupe_count = 0
       @values.each do |data|
         begin
-          db[:series].insert(time: data[:time], watt_hours: data[:wh],
-                             joules: data[:joules], register_id: register_id)
+          # simulate insert ignore
+          db.transaction do
+            count = db[:series].where(time: data[:time], register_id: register_id).count
+            if count < 1
+              db[:series].insert(time: data[:time], watt_hours: data[:wh],
+                                 joules: data[:joules], register_id: register_id)
+            else
+              dupe_count += 1
+            end
+          end
         rescue Sequel::UniqueConstraintViolation => e
-          LOGGER.warn 'Duplicate metric, skipping'
+          dupe_count += 1
         end
       end
+      LOGGER.warn "#{dupe_count} duplicate metrics not recorded for register #{@name}." if dupe_count > 0
     end
 
     def values(by: :hour)
@@ -49,7 +59,7 @@ module Egauge
       result[1..-1]
     end
 
-    # normalize the register name and turn it into a symbol with 
+    # normalize the register name and turn it into a symbol with
     # underscores plus a shortened sha1 hash
     # this can cause name collisions, in theory
     # "Date & Time" => 'date_time_a9993e36470'
