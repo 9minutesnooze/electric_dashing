@@ -13,7 +13,7 @@ SCHEDULER.every '1m', first_in: 0 do
   if start_date == today
     LOGGER.info "Last synced at #{last_sync_time}. Pulling new metrics until #{now}..."
     # don't bother batching for less than a day
-    h = history.load(time_from: last_sync_time+1, time_until: now, units: Egauge::REQ_UNIT_MINUTES)
+    h = history.load(time_from: last_sync_time + 1, time_until: now, units: Egauge::REQ_UNIT_MINUTES)
     h.each { |register| register.write(DB) }
   else
     start_date.upto(Date.today) do |date|

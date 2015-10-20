@@ -16,9 +16,11 @@ module Egauge
         req.params = [units, REQ_VIRTUAL, REQ_DELTA]
         if time_from
           req.params[REQ_TIMESTAMP_FROM] = time_from.to_i
+          LOGGER.debug "REQ_TIMESTAMP_FROM = #{time_from.to_i}"
         end
         if time_until
           req.params[REQ_TIMESTAMP_UNTIL] = time_until.to_i
+          LOGGER.debug "REQ_TIMESTAMP_UNTIL = #{time_until.to_i}"
         end
       end
     end
