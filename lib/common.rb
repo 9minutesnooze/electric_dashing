@@ -17,11 +17,10 @@ def generation_since(start, register_name)
   result[:sum_wh].nil? ? 0 : result[:sum_wh].abs.round(1)
 end
 
-
 REGISTER = 'gen'
 USAGE_REGISTER = 'use'
 LOGGER = Logger.new($stderr)
-LOGGER.level = ENV['DASHBOARD_DEBUG'] ? Logger::DEBUG : Logger::INFO
+LOGGER.level = ENV['DASHBOARD_DEBUG'].nil? ? Logger::INFO : Logger::DEBUG
 
 if ENV['EGAUGE_URL'].nil? || ENV['EGAUGE_URL'].empty?
   LOGGER.fatal 'Please set $EGAUGE_URL.  Example: EGAUGE_URL="http://solar.example.com"'
@@ -38,9 +37,6 @@ Egauge.configure do |config|
 end
 
 Sequel.extension :migration
-Sequel.extension :named_timezones
-Sequel.database_timezone    = ENV['DB_TZ'] || 'America/New_York'
-Sequel.application_timezone = ENV['DB_TZ'] || 'America/New_York'
 DB = Sequel.connect(ENV['DB_URL'], logger: LOGGER, sql_log_level: :debug)
 
 migration_path = File.expand_path('../../db/migrate', __FILE__)
