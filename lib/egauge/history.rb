@@ -22,7 +22,7 @@ module Egauge
       @registers
     end
 
-    # load the time of the last synced 
+    # load the time of the last synced
     def last_sync_time
       query = 'select max(time) as last_sync_time from  series'
       result = DB[query].first
@@ -42,6 +42,7 @@ module Egauge
     def load_into_registers(body, units:)
       result = []
       data = body['group']['data']
+      LOGGER.debug data.inspect
       if data.is_a? Array
         LOGGER.error "body['group']['data'] is an Array.  Don't know how to cope yet"
         data = data.first
