@@ -112,3 +112,6 @@ DEPENDENCIES
   rake
   rubocop
   sequel
+
+BUNDLED WITH
+   1.10.1
